@@ -1,0 +1,7 @@
+RewriteEngine On
+# Si on tombe sur un fichier qui n'existe pas , on continue notre request
+RewriteCond %{REQUEST_FILENAME} !-f
+# Si on tombe sur un dossier qui n'existe pas , on continue notre request
+RewriteCond %{REQUEST_FILENAME} !-d
+#Drapeau : NC  = NO CASE ( Miniscule - Majuscule , L= LAST INSERT )
+RewriteRule ^(.*)$ index.php?url=$1 [NC,L]
