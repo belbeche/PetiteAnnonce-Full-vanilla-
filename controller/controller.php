@@ -5,12 +5,9 @@ require_once('model/model.php');
 /**
  * Connexion des utilisateurs
  */
-function connection($login, $password)
+function connection($login, $pswd)
 {
-    // $login = getConnection($login, $password);
-    require_once('view/login.php');
-
-    return $login;
+    login($login, $pswd);
 }
 /**
  * Function logout
@@ -23,16 +20,7 @@ function logOut()
     header('Location: /');
     exit();
 }
-/**
- * on rempli les sessions
- *
- * @param [type] $user
- */
-function openSession($user)
-{
-    $_SESSION["id"] = $user->id;
-    $_SESSION["login"] = $user->login;
-}
+
 /**
  * J'affiche tout mes articles 
  */

@@ -1,5 +1,4 @@
 <?php
-session_start();
 $title = 'Connexion';
 
 ob_start();
@@ -8,7 +7,7 @@ ob_start();
 
 <div class="container">
     <h1>Page de connection </h1>
-    <form action="login_post" method="POST">
+    <form action="/login_post" method="POST">
         <div class="form-group">
             <input type="text" name="username" class="form-control">
         </div>

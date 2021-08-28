@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $title = 'MyApp';
 // if (isset($_POST['username']) && !empty($_POST['username'])) {
 //     echo $_POST['username'];
@@ -8,29 +6,28 @@ $title = 'MyApp';
 ob_start();
 ?>
 
-<?php
-$db = getPdo();
-$reqs = $db->prepare("SELECT * FROM posts INNER JOIN users ON user_id = users.id ORDER BY posts.id DESC");
-$reqs->execute();
-$reqs->fetch();
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/simplex/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
 
-?>
-<div class="jumbotron jumbotron-fluid container">
-    <div class="container">
-        <h1 class="display-4">Site en construction</h1>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique voluptas soluta voluptatibus illum expedita maiores, exercitationem placeat voluptate nemo consectetur autem eum aliquam aut fuga sapiente itaque error sequi ad..</p>
-    </div>
-</div>
+<main>
+    <h1>Resize your browser to preview okayNav</h1>
+</main>
+
 <div class="container">
     <div class="row">
-        <?php foreach ($reqs as $data) : ?>
+        <?php foreach ($posts as $data) : ?>
             <div class="col-md-4">
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title"><?= htmlspecialchars($data['title']); ?></h5>
                         <h6 class="card-subtitle text-muted">TAGS</h6>
                     </div>
-                    <?= "<img src='../uploads/" . $data['picture_ads'] . "'>" ?>
+                    <!-- "<img src='../uploads/" . $data'picture_ads' . "'>" ?> -->
+                    <a href="../uploads/<?= $data['picture_ads'] ?>"><img src="../uploads/<?= $data['picture_ads'] ?>" alt="pas cher" style="width:100%;height:auto;"></a>
                     <div class="card-body">
                         <p class="card-text"><?= nl2br(htmlspecialchars($data['content'])); ?></p>
                     </div>
@@ -38,7 +35,7 @@ $reqs->fetch();
                         <em><a href="/post/<?= $data['id'] ?>">Voir la suite</a></em>
                     </div>
                     <div class="card-footer text-muted">
-                        Publié le <?= $data['created_at']; ?>
+                        Publié le <?= $data['created_at'] ?>
                     </div>
                     <div class="card-footer text-muted">
                         <!-- Je récupere ma valeur dans la BDD -->
