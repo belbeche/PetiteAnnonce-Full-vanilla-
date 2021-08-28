@@ -1,6 +1,5 @@
 <?php
-$title = 'Single Ads';
-session_start();
+$title = 'Ads Single';
 require_once('model/model.php');
 ob_start();
 ?>
@@ -9,26 +8,24 @@ ob_start();
 
 <p><a href="/">Retour à la liste des annonces</a></p>
 <br>
+
 <?php
-$db = getPdo();
-$sql = "SELECT * FROM posts WHERE user_id = ? LIMIT 1";
-$req = $db->prepare($sql);
-$req->execute(array($_SESSION['userID']));
-if ($req->rowCount() == 1) {
-    $result = $req->fetch();
-}
+/*
 
 if ($result['id'] == $result) { ?>
     <a href="<?= $result['id'] ?>">Modifier le post</a>
 <?php } ?>
-
+*/
+?>
 
 
 <div class="news">
-    <?= "<img src='../uploads/" . $post['picture_ads'] . "'>"  ?>
+
+    <?= "<img src='../uploads/" . $post['picture_ads'] . "' style='width:100%;height:auto;'>"  ?>
     <h3>Titre : <?= htmlspecialchars($post['title'])  ?></h3>
     <p> Contenu : <?= nl2br($post['content']) ?></p>
-    <em>Publié le <?= $post['date_creation_fr'] ?></em>
+    <em>Publié le <?= $post['created_at'] ?></em>
+
 </div>
 
 

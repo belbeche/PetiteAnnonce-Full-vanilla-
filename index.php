@@ -11,11 +11,11 @@ if (isset($_GET['url'])) {
 if ($url == '') {
     listPosts();
 } elseif ($url[0] == 'login' && !empty($url[0])) {
-    require('view/login.php');
+    require('./view/login.php');
 } elseif ($url[0] == 'logout' && !empty($url[0])) {
     logOut();
 } elseif ($url[0] == 'login_post' && !empty($url[0])) {
-    require('view/login_post.php');
+    connection($_POST['username'], $_POST['pwd']);
 } elseif ($url[0] == 'post' && !empty($url[1])) {
     $idAnnonce = $url[1];
     post($idAnnonce);
