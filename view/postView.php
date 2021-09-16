@@ -1,42 +1,29 @@
 <?php
 $title = 'Ads Single';
-require_once('model/model.php');
+require_once('models/model.php');
 ob_start();
 ?>
 
-<h1>Affichage d'une annonce</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div class="news container">
+            <h1>Affichage d'une annonce</h1>
 
-<p><a href="/">Retour à la liste des annonces</a></p>
-<br>
-
-<?php
-/*
-
-if ($result['id'] == $result) { ?>
-    <a href="<?= $result['id'] ?>">Modifier le post</a>
-<?php } ?>
-*/
-?>
-
-
-<div class="news">
-
-    <?= "<img src='../uploads/" . $post['picture_ads'] . "' style='width:100%;height:auto;'>"  ?>
-    <h3>Titre : <?= htmlspecialchars($post['title'])  ?></h3>
-    <p> Contenu : <?= nl2br($post['content']) ?></p>
-    <em>Publié le <?= $post['created_at'] ?></em>
-
+            <p><a href="/">Retour à la liste des annonces</a></p>
+            <br>
+            <div class="image">
+                <?= "<img src='" . $post['image'] . "' style='width:400px;height:auto;'>"  ?>
+            </div>
+            <h3>Titre : <?= htmlspecialchars($post['titre'])  ?></h3>
+            <p> Contenu : <?= nl2br($post['contenu']) ?></p>
+            <em>Publié le <?= $post['created_at'] ?></em>
+        </div>
+    </div>
+    <div class="col-md-6">
+        Formulaire de contact
+    </div>
 </div>
-
-
-<h2>Commentaires</h2>
-
-<?php foreach ($comments as $comment) : ?>
-    <p> Utilisateur: <?= htmlspecialchars($comment['author']) ?></p>
-    <em>publié le <?= $comment['comment_date'] ?></em>
-    <p>Message : <?= nl2br($comment['comment']) ?></p>
-<?php endforeach ?>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('base.php'); ?>
